@@ -3,20 +3,21 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0a0a0a">
-<title>SBTI 人格测试 · 27 种结局图鉴</title>
-<meta name="description" content="SBTI 人格测试完整结果图鉴，27 种结局（25 标准人格 + HHHH 兜底 + DRUNK 隐藏）。移动端优化，所有数据与官网字节级一致。">
-<meta property="og:title" content="SBTI 人格测试 · 27 种结局图鉴">
-<meta property="og:description" content="MBTI 已经过时，SBTI 来了。27 种结局完整图鉴（简体中文）">
+<meta name="theme-color" content="#fff1f4">
+<title>张元英和柳智敏你更pick谁</title>
+<meta name="description" content="24 道成为型问题，测你更想拥有哪一种大女主剧本。">
+<meta property="og:title" content="张元英和柳智敏你更pick谁">
+<meta property="og:description" content="从舞台气场、声线、时尚感、亲近感和 solo 主角感，看你更想pick谁。">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎭%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B7%3C/text%3E%3C/svg%3E">
+<link rel="preload" as="image" href="./images/idols/wonyoung-white-sailor.jpg">
+<link rel="preload" as="image" href="./images/idols/karina-black-beret-white-hair.jpg">
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
-  // Tailwind config + early theme init (prevents flash)
   tailwind.config = { darkMode: 'class' };
   (function () {
-    const stored = localStorage.getItem('sbti-theme');
+    const stored = localStorage.getItem('k-idol-preference-theme');
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const isDark = stored ? stored === 'dark' : prefersDark;
     if (isDark) document.documentElement.classList.add('dark');
@@ -25,404 +26,275 @@
 
 <style>
   :root { --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom); }
-  body { -webkit-tap-highlight-color: transparent; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif; }
-  .no-scroll { overflow: hidden; }
-  .card-img { aspect-ratio: 1 / 1; object-fit: contain; }
-  .modal-enter { animation: slideUp .25s ease-out; }
-  @keyframes slideUp { from { transform: translateY(100%); } to { transform: translateY(0); } }
-  .fade-in { animation: fadeIn .2s ease-out; }
-  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-  /* Better tap targets on touch */
-  .card { transition: transform .15s, box-shadow .15s; }
-  .card:active { transform: scale(.97); }
-  /* Level badges */
-  .lvl-H { background: rgb(34 197 94 / .15); color: rgb(22 163 74); }
-  .lvl-M { background: rgb(234 179 8 / .15); color: rgb(202 138 4); }
-  .lvl-L { background: rgb(148 163 184 / .15); color: rgb(100 116 139); }
-  .dark .lvl-H { color: rgb(74 222 128); }
-  .dark .lvl-M { color: rgb(250 204 21); }
-  .dark .lvl-L { color: rgb(148 163 184); }
-  /* Toast */
-  .toast { animation: toastIn .25s ease-out, toastOut .25s ease-in 1.75s forwards; }
-  @keyframes toastIn { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes toastOut { to { opacity: 0; transform: translateY(12px); } }
+  body {
+    -webkit-tap-highlight-color: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  }
+  .idol-card { transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease; }
+  .idol-card:hover { transform: translateY(-2px); }
+  .hero-bg {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    min-height: 76vh;
+    background-color: #29151e;
+    background-image:
+      linear-gradient(90deg, rgb(35 17 26 / .96) 0%, rgb(35 17 26 / .82) 34%, rgb(35 17 26 / .44) 62%, rgb(35 17 26 / .18) 100%),
+      linear-gradient(135deg, #4b1728 0%, #2b2532 48%, #123a3b 100%);
+  }
+  .hero-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(115deg, rgb(255 255 255 / .12) 0%, rgb(255 255 255 / 0) 34%),
+      linear-gradient(0deg, rgb(255 228 230 / .16) 0%, rgb(255 228 230 / 0) 42%);
+  }
+  .dark .hero-bg {
+    background-color: #171015;
+    background-image:
+      linear-gradient(90deg, rgb(18 11 15 / .97) 0%, rgb(18 11 15 / .84) 36%, rgb(18 11 15 / .48) 64%, rgb(18 11 15 / .22) 100%),
+      linear-gradient(135deg, #341421 0%, #201c28 52%, #0f3032 100%);
+  }
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 34rem;
+    text-shadow: 0 2px 18px rgb(0 0 0 / .28);
+  }
+  .hero-visual {
+    position: absolute;
+    inset: 0 0 0 45%;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    gap: clamp(12px, 1.5vw, 24px);
+    padding-right: clamp(12px, 3vw, 44px);
+    pointer-events: none;
+  }
+  .hero-idol {
+    position: relative;
+    flex: 0 0 auto;
+    height: clamp(330px, 36vw, 560px);
+    width: auto;
+    max-width: none;
+    object-fit: contain;
+    object-position: bottom center;
+    filter: drop-shadow(0 24px 34px rgb(0 0 0 / .34));
+    -webkit-mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
+    mask-image: linear-gradient(to bottom, black 82%, transparent 100%);
+  }
+  .hero-idol-wonyoung {
+    order: 1;
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .hero-idol-karina {
+    order: 2;
+  }
+  .hero-copy-break {
+    display: block;
+  }
+  @media (max-width: 900px) {
+    .hero-bg {
+      align-items: flex-start;
+      background-image:
+        linear-gradient(180deg, rgb(35 17 26 / .96) 0%, rgb(35 17 26 / .82) 42%, rgb(35 17 26 / .36) 100%),
+        linear-gradient(135deg, #4b1728 0%, #2b2532 50%, #123a3b 100%);
+    }
+    .hero-inner {
+      padding-top: 3rem;
+      padding-bottom: 21.5rem;
+    }
+    .hero-actions {
+      margin-top: 1.5rem;
+      padding-top: 0;
+    }
+    .hero-visual {
+      inset: auto 0 0 0;
+      height: 19rem;
+      padding-right: clamp(8px, 2vw, 20px);
+      gap: 8px;
+    }
+    .hero-idol {
+      height: min(18.5rem, 50vw);
+    }
+    .hero-idol-wonyoung {
+      opacity: .62;
+    }
+    .hero-idol-karina {
+      opacity: .62;
+    }
+  }
+  @media (max-width: 520px) {
+    .hero-bg {
+      min-height: 40.5rem;
+    }
+    .hero-inner {
+      padding-top: 1.75rem;
+      padding-bottom: 13.75rem;
+    }
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-content h2 {
+      order: 2;
+    }
+    .hero-content p {
+      order: 4;
+      max-width: 19rem;
+      margin-top: 1rem;
+      font-size: .95rem;
+      line-height: 1.65;
+    }
+    .hero-copy-break {
+      display: none;
+    }
+    .hero-actions {
+      order: 3;
+      margin-top: 1rem;
+      gap: .6rem;
+    }
+    .hero-actions a {
+      padding: .65rem .9rem;
+    }
+    .hero-visual {
+      justify-content: center;
+      height: 13rem;
+      padding-right: 0;
+      gap: 8px;
+      transform: translateX(-2.25rem);
+    }
+    .hero-idol {
+      height: 12.6rem;
+    }
+    .hero-idol-wonyoung {
+      opacity: 1;
+    }
+    .hero-idol-karina {
+      opacity: .68;
+    }
+  }
 </style>
 </head>
 
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-100 transition-colors duration-200">
-
-<!-- Sticky header -->
-<header class="sticky top-0 z-30 backdrop-blur-lg bg-white/80 dark:bg-slate-950/80 border-b border-slate-200 dark:border-slate-800" style="padding-top: var(--safe-top);">
-  <div class="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
-    <div class="flex items-center gap-2 min-w-0">
-      <span class="text-2xl">🎭</span>
-      <div class="min-w-0">
-        <h1 class="text-sm sm:text-base font-bold truncate">SBTI · 27 种结局图鉴</h1>
-        <p class="text-[10px] sm:text-xs text-slate-500 dark:text-slate-400 truncate">MBTI 已经过时，SBTI 来了</p>
-      </div>
+<body class="bg-rose-50 text-zinc-950 dark:bg-[#151114] dark:text-rose-50 transition-colors duration-200">
+<header class="sticky top-0 z-20 backdrop-blur-lg bg-white/86 dark:bg-[#151114]/88 border-b border-rose-100 dark:border-rose-900/30" style="padding-top: var(--safe-top);">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+    <div class="min-w-0">
+      <p class="text-[11px] font-medium uppercase text-rose-500 dark:text-rose-300">Presented by XJY</p>
+      <h1 class="text-base sm:text-lg font-semibold truncate">你更pick谁</h1>
+      <p class="text-xs text-zinc-500 dark:text-rose-100/70 truncate">测你的大女主剧本</p>
     </div>
-    <div class="flex items-center gap-1 shrink-0">
-      <button id="theme-toggle" aria-label="切换深色模式" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-95 transition">
+    <div class="flex items-center gap-2 shrink-0">
+      <a href="./quiz.html" class="px-3 py-2 rounded-lg text-sm bg-rose-600 hover:bg-rose-700 text-white transition">开始测试</a>
+      <button id="theme-toggle" aria-label="切换深色模式" class="p-2 rounded-lg bg-rose-100 hover:bg-rose-200 dark:bg-rose-950/50 dark:hover:bg-rose-900/70 transition">
         <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
         <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
       </button>
-      <a href="https://github.com/serenakeyitan/sbti-wiki" target="_blank" rel="noopener" aria-label="GitHub" class="p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-95 transition">
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-      </a>
     </div>
   </div>
 </header>
 
-<!-- Mirror switcher (only visible if on Vercel, recommends CF mirror) -->
-<div id="mirror-banner" class="hidden max-w-5xl mx-auto px-4 pt-4">
-  <div class="rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/50 p-3 flex items-start gap-3">
-    <span class="text-lg shrink-0">🇨🇳</span>
-    <div class="flex-1 text-sm">
-      <p class="font-medium text-amber-900 dark:text-amber-200">大陆用户打不开？试试镜像站</p>
-      <p class="text-xs text-amber-800 dark:text-amber-300/80 mt-0.5">Vercel 在国内常被降速，Cloudflare Pages 镜像通常更稳定。</p>
-      <a href="https://sbti-wiki.pages.dev" class="mt-1.5 inline-flex items-center gap-1 text-xs font-semibold text-amber-900 dark:text-amber-200 underline">
-        切换到 sbti-wiki.pages.dev →
-      </a>
+<main class="pb-16" style="padding-bottom: calc(4rem + var(--safe-bottom));">
+  <section class="hero-bg">
+    <div class="hero-visual" aria-hidden="true">
+      <img src="./images/idols/wonyoung-white-sailor.jpg" alt="" class="hero-idol hero-idol-wonyoung" decoding="async" fetchpriority="high">
+      <img src="./images/idols/karina-black-beret-white-hair.jpg" alt="" class="hero-idol hero-idol-karina" decoding="async" fetchpriority="high">
     </div>
-    <button id="mirror-dismiss" aria-label="关闭" class="shrink-0 text-amber-600 dark:text-amber-400 hover:text-amber-900 dark:hover:text-amber-200">
-      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-    </button>
-  </div>
-</div>
-
-<!-- Hero -->
-<section class="max-w-5xl mx-auto px-4 pt-6 pb-4">
-  <div class="text-center">
-    <div class="inline-flex flex-wrap gap-1.5 justify-center text-xs">
-      <span class="px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300">27 种结局</span>
-      <span class="px-2.5 py-1 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300">15 维度</span>
-      <span class="px-2.5 py-1 rounded-full bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300">30 + 1 题</span>
-      <span class="px-2.5 py-1 rounded-full bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300">简体中文</span>
+    <div class="hero-inner max-w-6xl mx-auto px-4 py-14 sm:py-20 w-full">
+      <div class="hero-content text-white">
+        <div class="flex flex-wrap gap-2 text-xs">
+          <span class="px-2.5 py-1 rounded-full bg-white/18 border border-white/25">24 个大女主剧本</span>
+          <span class="px-2.5 py-1 rounded-full bg-white/18 border border-white/25">12 个衡量维度</span>
+          <span class="px-2.5 py-1 rounded-full bg-white/18 border border-white/25">72 张idol美图</span>
+        </div>
+        <h2 class="mt-5 text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">张元英or柳智敏<br>你更pick谁</h2>
+        <p class="mt-5 max-w-lg text-base sm:text-lg leading-relaxed text-white/86">从甜感、冷感、舞台爆发、声线类型、镜头表现<br class="hero-copy-break">和亲近感里，找出你最欣赏的那一种漂亮和能量。</p>
+        <div class="hero-actions mt-10 sm:mt-12 flex flex-wrap gap-3 pt-2">
+          <a href="./quiz.html" class="px-5 py-3 rounded-lg bg-rose-600 hover:bg-rose-700 text-white font-medium transition">现在开始</a>
+          <a href="#idols" class="px-5 py-3 rounded-lg bg-white/16 hover:bg-white/24 border border-white/25 text-white font-medium transition">查看结果池</a>
+        </div>
+      </div>
     </div>
-    <p class="mt-4 text-sm sm:text-base text-slate-600 dark:text-slate-400 max-w-xl mx-auto leading-relaxed">
-      对 <a href="https://sbti.fancc.de5.net" target="_blank" rel="noopener" class="underline decoration-dotted hover:text-emerald-600 dark:hover:text-emerald-400">sbti.fancc.de5.net</a> 最近爆火的人格测试做的完整图鉴。<br>
-      所有数据与官网<strong>字节级一致</strong>，点击人格看详情。
-    </p>
-  </div>
-</section>
+  </section>
 
-<!-- Normal types section -->
-<main class="max-w-5xl mx-auto px-3 sm:px-4 pb-24">
-  <h2 class="mb-3 px-1 text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-2">
-    <span class="w-1 h-4 bg-emerald-500 rounded"></span>
-    标准人格 · 25 种
-  </h2>
-  <div id="grid-normal" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3"></div>
+  <section class="max-w-6xl mx-auto px-4 mt-10" id="dimensions">
+    <h3 class="text-lg font-semibold">测试核心区分</h3>
+    <div class="mt-4 grid grid-cols-2 sm:grid-cols-2 xl:grid-cols-6 gap-2 sm:gap-3">
+      <div class="rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] p-3 sm:p-4">
+        <p class="text-[11px] sm:text-xs uppercase tracking-wide text-rose-500 dark:text-rose-300">视觉偏好</p>
+        <p class="mt-1.5 sm:mt-2 text-xs sm:text-sm text-zinc-600 dark:text-rose-100/72">甜感亮度、冷感气场</p>
+      </div>
+      <div class="rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] p-3 sm:p-4">
+        <p class="text-[11px] sm:text-xs uppercase tracking-wide text-rose-500 dark:text-rose-300">舞台吸引</p>
+        <p class="mt-1.5 sm:mt-2 text-xs sm:text-sm text-zinc-600 dark:text-rose-100/72">舞台爆发、舞蹈张力</p>
+      </div>
+      <div class="rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] p-3 sm:p-4">
+        <p class="text-[11px] sm:text-xs uppercase tracking-wide text-teal-600 dark:text-teal-300">音乐取向</p>
+        <p class="mt-1.5 sm:mt-2 text-xs sm:text-sm text-zinc-600 dark:text-rose-100/72">声线质感、作品叙事</p>
+      </div>
+      <div class="rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] p-3 sm:p-4">
+        <p class="text-[11px] sm:text-xs uppercase tracking-wide text-rose-500 dark:text-rose-300">镜头审美</p>
+        <p class="mt-1.5 sm:mt-2 text-xs sm:text-sm text-zinc-600 dark:text-rose-100/72">时尚品牌、神图体质</p>
+      </div>
+      <div class="rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] p-3 sm:p-4">
+        <p class="text-[11px] sm:text-xs uppercase tracking-wide text-teal-600 dark:text-teal-300">性格氛围</p>
+        <p class="mt-1.5 sm:mt-2 text-xs sm:text-sm text-zinc-600 dark:text-rose-100/72">亲近感、团队感</p>
+      </div>
+      <div class="rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] p-3 sm:p-4">
+        <p class="text-[11px] sm:text-xs uppercase tracking-wide text-rose-500 dark:text-rose-300">偶像叙事</p>
+        <p class="mt-1.5 sm:mt-2 text-xs sm:text-sm text-zinc-600 dark:text-rose-100/72">Solo 主角、经典滤镜</p>
+      </div>
+    </div>
+  </section>
 
-  <h2 class="mt-8 mb-3 px-1 text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider flex items-center gap-2">
-    <span class="w-1 h-4 bg-amber-500 rounded"></span>
-    特殊人格 · 2 种
-  </h2>
-  <div id="grid-special" class="grid grid-cols-2 gap-3"></div>
+  <section class="max-w-6xl mx-auto px-4 mt-12" id="idols">
+    <div class="flex items-center justify-between gap-3">
+      <h3 class="text-lg font-semibold">24 个大女主剧本</h3>
+      <a href="./quiz.html" class="text-sm font-medium text-rose-600 dark:text-rose-300">去做测试</a>
+    </div>
+    <div id="idol-grid" class="mt-4 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4"></div>
+  </section>
 </main>
 
-<!-- Footer -->
-<footer class="max-w-5xl mx-auto px-4 py-8 border-t border-slate-200 dark:border-slate-800 text-xs text-slate-500 dark:text-slate-400" style="padding-bottom: calc(2rem + var(--safe-bottom));">
-  <div class="space-y-2">
-    <p>📊 数据来源：<a href="https://sbti.fancc.de5.net" target="_blank" rel="noopener" class="underline hover:text-emerald-600 dark:hover:text-emerald-400">sbti.fancc.de5.net</a> · 通过 <a href="https://github.com/bingran-you/sbti-cli" target="_blank" rel="noopener" class="underline hover:text-emerald-600 dark:hover:text-emerald-400">sbti-cli</a> 的 sandbox runtime 抓取</p>
-    <p>🎨 原测试作者：B 站 <a href="https://space.bilibili.com/417038183" target="_blank" rel="noopener" class="underline hover:text-emerald-600 dark:hover:text-emerald-400">@蛆肉儿串儿</a> · 所有文案与插画版权归原作者所有</p>
-    <p>🔧 CLI 作者：<a href="https://github.com/bingran-you" target="_blank" rel="noopener" class="underline hover:text-emerald-600 dark:hover:text-emerald-400">Bingran You</a> · 整理：<a href="https://github.com/serenakeyitan" target="_blank" rel="noopener" class="underline hover:text-emerald-600 dark:hover:text-emerald-400">@serenakeyitan</a></p>
-    <p class="pt-2 italic">⚠️ 仅供娱乐，别拿它当诊断、面试、相亲、分手、招魂、算命或人生判决书。</p>
-  </div>
-</footer>
+<script type="module">
+import { homeIdolOrder, outcomesData } from './data/idol-data.mjs';
 
-<!-- Modal overlay -->
-<div id="modal" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm" aria-hidden="true">
-  <div id="modal-content" class="absolute inset-x-0 bottom-0 top-8 sm:top-16 bg-white dark:bg-slate-900 rounded-t-3xl sm:rounded-3xl sm:max-w-2xl sm:mx-auto sm:bottom-8 shadow-2xl overflow-hidden flex flex-col modal-enter" role="dialog" aria-modal="true">
-    <!-- Modal header -->
-    <div class="flex items-center justify-between px-4 py-3 border-b border-slate-200 dark:border-slate-800 shrink-0">
-      <div class="w-9"></div>
-      <div class="w-12 h-1 bg-slate-300 dark:bg-slate-700 rounded-full"></div>
-      <button id="modal-close" aria-label="关闭" class="w-9 h-9 flex items-center justify-center rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 active:scale-95 transition">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-    </div>
-    <!-- Modal scrollable body -->
-    <div id="modal-body" class="flex-1 overflow-y-auto overscroll-contain"></div>
-    <!-- Modal actions -->
-    <div class="shrink-0 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-4 py-3 flex gap-2" style="padding-bottom: calc(.75rem + var(--safe-bottom));">
-      <button id="modal-share" class="flex-1 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-[.98] text-white font-medium transition flex items-center justify-center gap-2">
-        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg>
-        分享
-      </button>
-      <button id="modal-copy" class="px-4 py-3 rounded-xl bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 active:scale-[.98] font-medium transition">
-        复制链接
-      </button>
-    </div>
-  </div>
-</div>
+const themeToggle = document.getElementById('theme-toggle');
+const grid = document.getElementById('idol-grid');
 
-<!-- Toast -->
-<div id="toast" class="hidden fixed bottom-24 left-1/2 -translate-x-1/2 z-[60] px-4 py-2 rounded-full bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-sm shadow-2xl"></div>
+themeToggle.addEventListener('click', () => {
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('k-idol-preference-theme', isDark ? 'dark' : 'light');
+  document.querySelector('meta[name="theme-color"]').content = isDark ? '#151114' : '#fff1f4';
+});
 
-<script>
-(async function () {
-  // ---------- Data loading ----------
-  const res = await fetch('data/outcomes.json');
-  const data = await res.json();
-  const OUTCOMES = data.outcomes;
-  const TRIGGERS = data.specialTriggers;
-  const byCode = Object.fromEntries(OUTCOMES.map(o => [o.code, o]));
-
-  // ---------- Theme toggle ----------
-  const themeToggle = document.getElementById('theme-toggle');
-  themeToggle.addEventListener('click', () => {
-    const isDark = document.documentElement.classList.toggle('dark');
-    localStorage.setItem('sbti-theme', isDark ? 'dark' : 'light');
-    document.querySelector('meta[name="theme-color"]').content = isDark ? '#0a0a0a' : '#ffffff';
-  });
-
-  // ---------- Mirror banner (show on Vercel, hide on CF Pages) ----------
-  const mirrorBanner = document.getElementById('mirror-banner');
-  const mirrorDismissed = localStorage.getItem('sbti-mirror-dismissed') === '1';
-  const onVercel = /\.vercel\.app$/i.test(location.hostname);
-  if (onVercel && !mirrorDismissed) {
-    mirrorBanner.classList.remove('hidden');
-  }
-  document.getElementById('mirror-dismiss').addEventListener('click', () => {
-    mirrorBanner.classList.add('hidden');
-    localStorage.setItem('sbti-mirror-dismissed', '1');
-  });
-
-  // ---------- Rarity helpers ----------
-  function rarityTier(pct) {
-    if (pct >= 5)  return { cls: 'bg-slate-400/90', label: '常见' };
-    if (pct >= 2)  return { cls: 'bg-blue-500/90', label: '中等' };
-    if (pct >= 1)  return { cls: 'bg-purple-500/90', label: '稀有' };
-    return { cls: 'bg-amber-500/90', label: '极稀有' };
-  }
-
-  // ---------- Card rendering ----------
-  function cardHTML(o) {
-    const specialBadge = o.isSpecial
-      ? `<span class="absolute top-1.5 left-1.5 text-[10px] bg-amber-500 text-white px-1.5 py-0.5 rounded-full font-medium z-10">${o.code === 'HHHH' ? '兜底' : '隐藏'}</span>`
-      : '';
-    const r = o.rarity;
-    const tier = rarityTier(r.percent);
-    const rarityBadge = `<span class="absolute top-1.5 right-1.5 text-[10px] ${tier.cls} text-white px-1.5 py-0.5 rounded-full font-bold z-10 backdrop-blur-sm shadow">${r.percent}%</span>`;
-    return `
-      <button data-code="${o.code}" class="card relative text-left rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shadow-sm hover:shadow-md active:shadow-sm">
-        ${specialBadge}
-        ${rarityBadge}
-        <div class="card-img bg-slate-50 dark:bg-slate-800 flex items-center justify-center">
-          <img src="${o.image}" alt="${o.code} ${o.cn}" loading="lazy" class="w-full h-full object-contain">
-        </div>
-        <div class="p-2.5 sm:p-3">
-          <div class="flex items-baseline gap-1.5 flex-wrap">
-            <span class="font-bold text-sm sm:text-base">${o.code}</span>
-            <span class="text-xs sm:text-sm text-slate-600 dark:text-slate-400">${o.cn}</span>
-          </div>
-          <p class="mt-1 text-[11px] sm:text-xs text-slate-500 dark:text-slate-500 line-clamp-2 leading-snug">${o.oneLiner}</p>
-        </div>
-      </button>
-    `;
-  }
-
-  document.getElementById('grid-normal').innerHTML =
-    OUTCOMES.filter(o => !o.isSpecial).map(cardHTML).join('');
-  document.getElementById('grid-special').innerHTML =
-    OUTCOMES.filter(o => o.isSpecial).map(cardHTML).join('');
-
-  document.querySelectorAll('[data-code]').forEach(btn => {
-    btn.addEventListener('click', () => openModal(btn.dataset.code));
-  });
-
-  // ---------- Modal ----------
-  const modal = document.getElementById('modal');
-  const modalBody = document.getElementById('modal-body');
-  const modalContent = document.getElementById('modal-content');
-  let currentCode = null;
-
-  function buildDimTable(vector) {
-    if (!vector) return '';
-    // Group by model
-    const groups = {};
-    vector.forEach(v => {
-      if (!groups[v.model]) groups[v.model] = [];
-      groups[v.model].push(v);
-    });
-    return Object.entries(groups).map(([model, rows]) => `
-      <div class="mb-3">
-        <h4 class="text-xs font-semibold text-slate-500 dark:text-slate-500 uppercase tracking-wider mb-1.5">${model}</h4>
-        <div class="space-y-1.5">
-          ${rows.map(r => `
-            <div class="flex items-start gap-2">
-              <span class="shrink-0 w-7 text-center text-xs font-mono py-0.5 rounded lvl-${r.level} font-bold">${r.level}</span>
-              <div class="flex-1 min-w-0">
-                <div class="text-xs sm:text-sm font-medium">${r.name}</div>
-                <div class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 leading-snug mt-0.5">${r.explanation}</div>
-              </div>
-            </div>
-          `).join('')}
-        </div>
+grid.innerHTML = homeIdolOrder
+  .map((code) => outcomesData.outcomes.find((outcome) => outcome.code === code))
+  .filter(Boolean)
+  .map((outcome) => `
+  <article id="${outcome.code}" class="idol-card rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] overflow-hidden shadow-sm shadow-rose-100/70 dark:shadow-none">
+    <img src="${outcome.image}" alt="${outcome.cn}" class="w-full aspect-[4/5] object-contain object-center bg-rose-50 dark:bg-[#181216]" loading="lazy" decoding="async">
+    <div class="p-4">
+      <div class="flex flex-wrap items-baseline gap-2">
+        <h4 class="font-semibold">${outcome.cn}</h4>
+        <span class="text-xs text-zinc-500 dark:text-rose-100/60">${outcome.group}</span>
       </div>
-    `).join('');
-  }
-
-  function modalHTML(o) {
-    const trigger = o.isSpecial ? TRIGGERS[o.code] : null;
-    return `
-      <div class="px-4 sm:px-6 py-5 fade-in">
-        <!-- Hero image -->
-        <div class="flex justify-center mb-4">
-          <img src="${o.image}" alt="${o.code} ${o.cn}" class="max-w-[240px] sm:max-w-[280px] w-full rounded-2xl">
-        </div>
-
-        <!-- Title -->
-        <div class="text-center mb-3">
-          <div class="text-2xl sm:text-3xl font-bold">${o.code}</div>
-          <div class="text-base sm:text-lg text-slate-600 dark:text-slate-400 mt-0.5">${o.cn}</div>
-          <div class="mt-2 text-sm italic text-slate-500 dark:text-slate-500">"${o.intro}"</div>
-        </div>
-
-        <!-- Rarity badge -->
-        ${(() => {
-          const tier = rarityTier(o.rarity.percent);
-          return `
-          <div class="mb-4 flex items-center justify-center">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full ${tier.cls} text-white shadow-lg">
-              <span class="text-lg">🎲</span>
-              <div class="text-left">
-                <div class="text-xs opacity-90 leading-tight">理论稀有度 · ${tier.label}</div>
-                <div class="text-sm font-bold leading-tight">${o.rarity.percent}% · 约 1/${o.rarity.oneInX}</div>
-              </div>
-            </div>
-          </div>
-          <p class="mb-4 text-center text-[10px] text-slate-400 dark:text-slate-500">⚠️ 模拟采样估算，非真实用户统计</p>
-          `;
-        })()}
-
-        ${o.pattern ? `
-          <div class="mb-4 flex items-center justify-center">
-            <code class="text-[11px] sm:text-xs px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 font-mono">${o.pattern}</code>
-          </div>
-        ` : ''}
-
-        ${trigger ? `
-          <div class="mb-4 p-3 rounded-xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50">
-            <div class="flex items-center gap-2 text-sm font-semibold text-amber-900 dark:text-amber-200 mb-1">
-              <span>${trigger.badge}</span>
-              <span>${trigger.label}</span>
-            </div>
-            <div class="text-xs text-amber-800 dark:text-amber-300/80 font-mono mb-1.5">${trigger.condition}</div>
-            <p class="text-xs text-amber-800 dark:text-amber-300/80 leading-relaxed">${trigger.description}</p>
-          </div>
-        ` : ''}
-
-        <!-- Commentary -->
-        <div class="mb-5">
-          <h3 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">一句话解读</h3>
-          <p class="text-sm leading-relaxed text-slate-700 dark:text-slate-300">${o.commentary}</p>
-        </div>
-
-        ${o.vector ? `
-          <div class="mb-5">
-            <h3 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2">十五维度模板</h3>
-            ${buildDimTable(o.vector)}
-          </div>
-        ` : ''}
-
-        <!-- Collapsible original -->
-        <details class="mb-3 rounded-xl bg-slate-50 dark:bg-slate-800/60 border border-slate-200 dark:border-slate-800 overflow-hidden">
-          <summary class="px-4 py-3 cursor-pointer text-sm font-medium flex items-center justify-between select-none">
-            <span>📜 原站完整解读</span>
-            <svg class="w-4 h-4 text-slate-500 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </summary>
-          <div class="px-4 pb-4 text-sm leading-relaxed text-slate-700 dark:text-slate-300 border-t border-slate-200 dark:border-slate-800 pt-3">
-            ${o.desc}
-          </div>
-        </details>
+      <p class="mt-2 text-xs text-zinc-500 dark:text-rose-100/58 leading-relaxed">${outcome.achievement}</p>
+      <p class="mt-2 text-sm text-zinc-600 dark:text-rose-100/74 leading-relaxed">${outcome.oneLiner}</p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        ${(outcome.tags || []).map((tag) => `<span class="px-2 py-1 rounded-full bg-rose-50 dark:bg-rose-950/40 text-xs">${tag}</span>`).join('')}
       </div>
-    `;
-  }
-
-  function openModal(code) {
-    const o = byCode[code];
-    if (!o) return;
-    currentCode = code;
-    modalBody.innerHTML = modalHTML(o);
-    modalBody.scrollTop = 0;
-    modal.classList.remove('hidden');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.classList.add('no-scroll');
-    if (location.hash !== '#' + code) history.replaceState(null, '', '#' + code);
-  }
-
-  function closeModal() {
-    modal.classList.add('hidden');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.classList.remove('no-scroll');
-    currentCode = null;
-    if (location.hash) history.replaceState(null, '', location.pathname + location.search);
-  }
-
-  document.getElementById('modal-close').addEventListener('click', closeModal);
-  modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !modal.classList.contains('hidden')) closeModal(); });
-
-  // ---------- Share / copy ----------
-  function showToast(msg) {
-    const t = document.getElementById('toast');
-    t.textContent = msg;
-    t.classList.remove('hidden');
-    t.classList.remove('toast');
-    // force reflow to restart animation
-    void t.offsetWidth;
-    t.classList.add('toast');
-    setTimeout(() => t.classList.add('hidden'), 2000);
-  }
-
-  function shareUrl() {
-    return location.origin + location.pathname + '#' + currentCode;
-  }
-
-  document.getElementById('modal-share').addEventListener('click', async () => {
-    if (!currentCode) return;
-    const o = byCode[currentCode];
-    const url = shareUrl();
-    const text = `我的 SBTI 人格是 ${o.code}（${o.cn}）—— ${o.oneLiner}\n🎲 理论稀有度 ${o.rarity.percent}%（约 1/${o.rarity.oneInX}）`;
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: `SBTI · ${o.code} ${o.cn}`, text, url });
-        return;
-      } catch (e) {
-        if (e.name === 'AbortError') return;
-      }
-    }
-    // Fallback: copy
-    try {
-      await navigator.clipboard.writeText(`${text}\n${url}`);
-      showToast('已复制到剪贴板');
-    } catch {
-      showToast('复制失败');
-    }
-  });
-
-  document.getElementById('modal-copy').addEventListener('click', async () => {
-    if (!currentCode) return;
-    try {
-      await navigator.clipboard.writeText(shareUrl());
-      showToast('链接已复制');
-    } catch {
-      showToast('复制失败');
-    }
-  });
-
-  // ---------- Deep link support ----------
-  function handleHash() {
-    const code = decodeURIComponent(location.hash.replace(/^#/, ''));
-    if (code && byCode[code]) {
-      openModal(code);
-    }
-  }
-  window.addEventListener('hashchange', handleHash);
-  handleHash();
-})();
+      <p class="mt-3 text-xs text-zinc-500 dark:text-rose-100/58 leading-relaxed">${outcome.commentary}</p>
+    </div>
+  </article>
+`).join('');
 </script>
 </body>
 </html>

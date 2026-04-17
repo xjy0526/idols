@@ -1,10 +1,10 @@
-# Cloudflare Pages headers (equivalent to vercel.json headers section)
-
-/images/*
-  Cache-Control: public, max-age=31536000, immutable
+# Cloudflare Pages headers
 
 /data/*
   Cache-Control: public, max-age=3600, s-maxage=86400
+
+/images/*
+  Cache-Control: public, max-age=31536000, immutable
 
 /*
   X-Frame-Options: SAMEORIGIN

@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="scroll-smooth">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff1f4">
+<title>张元英or柳智敏你更pick谁</title>
+<meta name="description" content="24 道问题，测你更pick哪一种idol 气质。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%8C%B7%3C/text%3E%3C/svg%3E">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = { darkMode: 'class' };
+  (function () {
+    const stored = localStorage.getItem('k-idol-preference-theme');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const isDark = stored ? stored === 'dark' : prefersDark;
+    if (isDark) document.documentElement.classList.add('dark');
+  })();
+</script>
+
+<style>
+  :root { --safe-top: env(safe-area-inset-top); --safe-bottom: env(safe-area-inset-bottom); }
+  body {
+    -webkit-tap-highlight-color: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  }
+  .lvl-H { background: rgb(225 29 72 / .14); color: rgb(190 18 60); }
+  .lvl-M { background: rgb(13 148 136 / .13); color: rgb(15 118 110); }
+  .lvl-L { background: rgb(113 113 122 / .14); color: rgb(82 82 91); }
+  .dark .lvl-H { color: rgb(253 164 175); }
+  .dark .lvl-M { color: rgb(94 234 212); }
+  .dark .lvl-L { color: rgb(212 212 216); }
+  .progress-bar { transition: width .2s ease-out; }
+  .option-btn { transition: transform .12s ease, background-color .12s ease, border-color .12s ease; }
+  .option-btn:active { transform: scale(.985); }
+  @media (max-width: 1023px) {
+    .quiz-shell {
+      gap: .75rem;
+    }
+    .quiz-photo-card {
+      order: -1;
+      display: grid;
+      grid-template-columns: 86px minmax(0, 1fr);
+      align-items: center;
+    }
+    .quiz-photo-card #side-image {
+      width: 86px;
+      height: 112px;
+      aspect-ratio: auto;
+      border-radius: 8px;
+      margin: .75rem 0 .75rem .75rem;
+    }
+    .quiz-photo-card .photo-copy {
+      padding: .75rem .875rem;
+    }
+    .quiz-photo-card #side-image-name {
+      margin-top: 0;
+      font-size: .875rem;
+      line-height: 1.25rem;
+    }
+    .quiz-photo-card #side-image-achievement {
+      margin-top: .25rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+  @media (max-width: 520px) {
+    .quiz-card {
+      padding: 1rem;
+    }
+    .quiz-card #option-list {
+      margin-top: 1rem;
+      gap: .625rem;
+    }
+    .quiz-card .option-btn {
+      padding: .875rem;
+    }
+    .quiz-nav {
+      margin-top: 1rem;
+      align-items: center;
+    }
+    .quiz-nav #navigation-hint {
+      order: 3;
+      width: 100%;
+    }
+    .dimension-result-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .5rem;
+    }
+    .dimension-result-card {
+      padding: .75rem;
+    }
+    .dimension-result-card .dimension-explanation {
+      display: none;
+    }
+  }
+</style>
+</head>
+
+<body class="bg-rose-50 text-zinc-950 dark:bg-[#151114] dark:text-rose-50 transition-colors duration-200">
+<header class="sticky top-0 z-20 backdrop-blur-lg bg-white/86 dark:bg-[#151114]/88 border-b border-rose-100 dark:border-rose-900/30" style="padding-top: var(--safe-top);">
+  <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-3">
+    <div class="min-w-0">
+      <h1 class="text-base sm:text-lg font-semibold truncate">张元英or柳智敏你更pick谁</h1>
+      <p class="text-xs text-zinc-500 dark:text-rose-100/70 truncate">24 题测你的大女主剧本</p>
+    </div>
+    <div class="flex items-center gap-2 shrink-0">
+      <a href="./index.html" class="px-3 py-2 rounded-lg text-sm bg-rose-100 hover:bg-rose-200 dark:bg-rose-950/50 dark:hover:bg-rose-900/70 transition">返回首页</a>
+      <button id="theme-toggle" aria-label="切换深色模式" class="p-2 rounded-lg bg-rose-100 hover:bg-rose-200 dark:bg-rose-950/50 dark:hover:bg-rose-900/70 transition">
+        <svg class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        <svg class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 pt-6 pb-16" style="padding-bottom: calc(4rem + var(--safe-bottom));">
+  <section id="quiz" class="hidden">
+    <div class="flex items-center justify-between gap-3 text-xs sm:text-sm text-zinc-500 dark:text-rose-100/68">
+      <p id="progress-label" aria-live="polite"></p>
+      <p id="progress-meta"></p>
+    </div>
+    <div class="mt-3 h-2 rounded-full bg-rose-100 dark:bg-rose-950/40 overflow-hidden">
+      <div id="progress-bar" class="progress-bar h-full rounded-full bg-rose-600" style="width: 0%;"></div>
+    </div>
+
+    <div class="quiz-shell mt-6 grid lg:grid-cols-[minmax(0,1fr)_300px] gap-4 items-start">
+      <div class="quiz-card rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] p-5 sm:p-6 shadow-sm shadow-rose-100/70 dark:shadow-none">
+        <p id="question-tag" class="text-xs font-medium uppercase tracking-wide text-rose-500 dark:text-rose-300"></p>
+        <h2 id="question-text" class="mt-3 text-lg sm:text-xl font-semibold leading-relaxed"></h2>
+        <div id="option-list" class="mt-6 grid gap-3"></div>
+        <div class="quiz-nav mt-5 flex flex-wrap items-center justify-between gap-3">
+          <button id="previous-button" type="button" class="px-4 py-2.5 rounded-lg bg-rose-100 hover:bg-rose-200 disabled:opacity-40 disabled:hover:bg-rose-100 dark:bg-rose-950/50 dark:hover:bg-rose-900/70 dark:disabled:hover:bg-rose-950/50 text-sm font-medium transition">上一题</button>
+          <p id="navigation-hint" class="text-xs text-zinc-500 dark:text-rose-100/62">选完会自动进入下一题，也可以返回修改。</p>
+          <button id="next-button" type="button" class="px-4 py-2.5 rounded-lg bg-rose-100 hover:bg-rose-200 disabled:opacity-40 disabled:hover:bg-rose-100 dark:bg-rose-950/50 dark:hover:bg-rose-900/70 dark:disabled:hover:bg-rose-950/50 text-sm font-medium transition">下一题</button>
+        </div>
+      </div>
+
+      <aside class="quiz-photo-card lg:sticky lg:top-24 rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] overflow-hidden shadow-sm shadow-rose-100/70 dark:shadow-none">
+        <img id="side-image" alt="" class="w-full aspect-[4/5] object-cover object-top bg-rose-50 dark:bg-[#181216]" decoding="async" fetchpriority="high">
+        <div class="photo-copy p-4">
+          <p id="side-image-name" class="mt-1 text-sm font-medium"></p>
+          <p id="side-image-achievement" class="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-rose-100/58"></p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <section id="result" class="hidden"></section>
+</main>
+
+<script type="module">
+import { idolGalleryImages, quizData, outcomesData } from './data/idol-data.mjs';
+import { computeQuizResult, createQuizSession, getQuestionMetaLabel } from './quiz-core.mjs';
+
+const sections = {
+  quiz: document.getElementById('quiz'),
+  result: document.getElementById('result')
+};
+
+const progressLabel = document.getElementById('progress-label');
+const progressMeta = document.getElementById('progress-meta');
+const progressBar = document.getElementById('progress-bar');
+const questionTag = document.getElementById('question-tag');
+const questionText = document.getElementById('question-text');
+const optionList = document.getElementById('option-list');
+const sideImage = document.getElementById('side-image');
+const sideImageName = document.getElementById('side-image-name');
+const sideImageAchievement = document.getElementById('side-image-achievement');
+const previousButton = document.getElementById('previous-button');
+const nextButton = document.getElementById('next-button');
+const navigationHint = document.getElementById('navigation-hint');
+const themeToggle = document.getElementById('theme-toggle');
+
+const state = {
+  session: null,
+  imageByQuestionId: new Map(),
+  prefetchedImageUrls: new Set()
+};
+
+themeToggle.addEventListener('click', () => {
+  const isDark = document.documentElement.classList.toggle('dark');
+  localStorage.setItem('k-idol-preference-theme', isDark ? 'dark' : 'light');
+  document.querySelector('meta[name="theme-color"]').content = isDark ? '#151114' : '#fff1f4';
+});
+
+function showSection(name) {
+  Object.entries(sections).forEach(([key, element]) => {
+    element.classList.toggle('hidden', key !== name);
+  });
+}
+
+function levelClass(level) {
+  return `lvl-${level}`;
+}
+
+function buildDimensionGroups(result) {
+  const groups = new Map();
+
+  quizData.dimensionOrder.forEach((dimensionId) => {
+    const meta = quizData.dimensionMeta[dimensionId];
+    const level = result.levels[dimensionId];
+    const row = {
+      id: dimensionId,
+      model: meta.model,
+      name: meta.name,
+      level,
+      rawScore: result.rawScores[dimensionId],
+      answerCount: result.answerCounts[dimensionId],
+      averageScore: result.averageScores[dimensionId],
+      explanation: quizData.dimExplanations[dimensionId][level]
+    };
+
+    if (!groups.has(meta.model)) {
+      groups.set(meta.model, []);
+    }
+
+    groups.get(meta.model).push(row);
+  });
+
+  return [...groups.entries()];
+}
+
+function shuffleItems(items) {
+  const shuffled = [...items];
+
+  for (let index = shuffled.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [shuffled[index], shuffled[swapIndex]] = [shuffled[swapIndex], shuffled[index]];
+  }
+
+  return shuffled;
+}
+
+function readGalleryQueue() {
+  const storageKey = 'k-idol-preference-gallery-queue';
+
+  try {
+    const stored = JSON.parse(localStorage.getItem(storageKey) || '[]');
+    const isValidQueue = Array.isArray(stored) &&
+      stored.every((item) => Number.isInteger(item) && item >= 0 && item < idolGalleryImages.length);
+    return isValidQueue ? stored : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeGalleryQueue(queue) {
+  try {
+    localStorage.setItem('k-idol-preference-gallery-queue', JSON.stringify(queue));
+  } catch {
+    // The quiz should still work if browser storage is unavailable.
+  }
+}
+
+function getNextGalleryImage() {
+  let queue = readGalleryQueue();
+
+  if (queue.length === 0) {
+    queue = shuffleItems(idolGalleryImages.map((_, index) => index));
+  }
+
+  const nextIndex = queue.shift();
+  writeGalleryQueue(queue);
+  return idolGalleryImages[nextIndex];
+}
+
+function getGalleryImageForQuestion(questionId) {
+  if (!state.imageByQuestionId.has(questionId)) {
+    state.imageByQuestionId.set(questionId, getNextGalleryImage());
+  }
+
+  return state.imageByQuestionId.get(questionId);
+}
+
+function prefetchImage(image) {
+  if (!image?.src || state.prefetchedImageUrls.has(image.src)) return;
+
+  state.prefetchedImageUrls.add(image.src);
+  const preload = new Image();
+  preload.decoding = 'async';
+  preload.src = image.src;
+}
+
+function prefetchUpcomingGalleryImages(count = 4) {
+  readGalleryQueue()
+    .slice(0, count)
+    .forEach((index) => prefetchImage(idolGalleryImages[index]));
+}
+
+function renderQuiz() {
+  const progress = state.session.getProgress();
+  const position = state.session.getPosition();
+  const currentQuestion = state.session.getCurrentQuestion();
+
+  if (!currentQuestion) {
+    renderResult(computeQuizResult(quizData, outcomesData, state.session.getAnswers()));
+    return;
+  }
+
+  showSection('quiz');
+  const currentIndex = position.index + 1;
+  const galleryImage = getGalleryImageForQuestion(currentQuestion.id);
+
+  progressLabel.textContent = `第 ${currentIndex} 题 / ${progress.total}`;
+  progressMeta.textContent = `${progress.done} 题已答`;
+  progressBar.style.width = `${(progress.done / progress.total) * 100}%`;
+  questionTag.textContent = getQuestionMetaLabel(currentQuestion);
+  questionText.textContent = currentQuestion.text;
+  sideImage.src = galleryImage.src;
+  sideImage.alt = galleryImage.name;
+  sideImageName.textContent = galleryImage.name;
+  sideImageAchievement.textContent = galleryImage.achievement;
+  prefetchUpcomingGalleryImages();
+  optionList.innerHTML = '';
+  previousButton.disabled = !position.canGoPrevious;
+  nextButton.disabled = !position.canGoNext;
+  navigationHint.textContent = position.canGoNext ? '这题已作答，可以改选，也可以直接下一题。' : '选完会自动进入下一题，也可以返回修改。';
+
+  const selectedValue = state.session.getAnswers()[currentQuestion.id];
+
+  currentQuestion.options.forEach((option, index) => {
+    const isSelected = Number(selectedValue) === Number(option.value);
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = `option-btn w-full text-left rounded-lg border px-4 py-4 ${
+      isSelected
+        ? 'border-rose-500 bg-rose-50 dark:border-rose-400 dark:bg-rose-950/36'
+        : 'border-rose-100 dark:border-rose-900/35 bg-rose-50/70 hover:bg-rose-100 hover:border-rose-300 dark:bg-[#181216] dark:hover:bg-rose-950/32 dark:hover:border-rose-700'
+    }`;
+    button.innerHTML = `
+      <div class="flex items-start gap-3">
+        <span class="shrink-0 mt-0.5 w-7 h-7 rounded-lg ${isSelected ? 'bg-rose-600 text-white border-rose-600' : 'bg-white dark:bg-[#211a1f] border-rose-100 dark:border-rose-900/35'} border flex items-center justify-center text-sm font-semibold">${String.fromCharCode(65 + index)}</span>
+        <span class="text-sm sm:text-base leading-relaxed">${option.label}</span>
+      </div>
+    `;
+    button.addEventListener('click', () => {
+      optionList.querySelectorAll('button').forEach((item) => {
+        item.disabled = true;
+        item.classList.add('opacity-70');
+      });
+      state.session.answerQuestion(currentQuestion.id, option.value);
+      requestAnimationFrame(renderQuiz);
+    });
+    optionList.appendChild(button);
+  });
+}
+
+previousButton.addEventListener('click', () => {
+  state.session.previousQuestion();
+  renderQuiz();
+});
+
+nextButton.addEventListener('click', () => {
+  state.session.nextQuestion();
+  renderQuiz();
+});
+
+function renderResult(result) {
+  showSection('result');
+  progressBar.style.width = '100%';
+
+  const primaryMatch = result.finalType;
+  const secondaryMatch = result.ranked.find((match) => match.code !== primaryMatch.code) ?? result.ranked[1];
+  const secondaryBadge = secondaryMatch
+    ? `匹配度 ${secondaryMatch.similarity}% · 精准命中 ${secondaryMatch.exact}/${quizData.dimensionOrder.length} 维`
+    : '';
+
+  const topMatches = result.ranked.slice(0, 5).map((match, index) => `
+    <li class="flex items-start justify-between gap-3 py-3 border-b border-rose-100 dark:border-rose-900/30 last:border-b-0">
+      <div class="min-w-0">
+        <p class="font-medium">${index + 1}. ${match.cn}</p>
+        <p class="mt-1 text-xs sm:text-sm text-zinc-500 dark:text-rose-100/62">${match.oneLiner}</p>
+      </div>
+      <div class="text-right shrink-0">
+        <p class="text-sm font-semibold">${match.similarity}%</p>
+        <p class="text-xs text-zinc-500 dark:text-rose-100/58">${match.exact}/${quizData.dimensionOrder.length} 命中</p>
+      </div>
+    </li>
+  `).join('');
+
+  const dimensionGroups = buildDimensionGroups(result).map(([model, rows]) => `
+    <section class="mt-6">
+      <h3 class="text-sm font-semibold text-zinc-500 dark:text-rose-100/62 uppercase tracking-wide">${model}</h3>
+      <div class="dimension-result-grid mt-3 grid gap-3">
+        ${rows.map((row) => `
+          <div class="dimension-result-card rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] p-4">
+            <div class="flex items-start gap-3">
+              <span class="shrink-0 px-2.5 py-1 rounded-lg text-xs font-bold ${levelClass(row.level)}">${row.level}</span>
+              <div class="min-w-0">
+                <div class="flex flex-wrap items-center gap-2">
+                  <p class="font-medium">${row.name}</p>
+                  <span class="text-xs text-zinc-500 dark:text-rose-100/58">均分 ${row.averageScore.toFixed(1)} · ${row.answerCount} 题</span>
+                </div>
+                <p class="dimension-explanation mt-1 text-sm text-zinc-600 dark:text-rose-100/74 leading-relaxed">${row.explanation}</p>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </section>
+  `).join('');
+
+  function renderMatchCard(match, label, badge, tone = 'rose') {
+    const backgroundNote = match.background ? `
+      <div class="mt-4 pt-4 border-t border-rose-100 dark:border-rose-900/30">
+        <p class="text-xs font-semibold uppercase tracking-wide text-rose-500 dark:text-rose-300">idol 背景</p>
+        <p class="mt-2 text-sm text-zinc-600 dark:text-rose-100/74 leading-relaxed">${match.background}</p>
+      </div>
+    ` : '';
+    const badgeClass = tone === 'teal'
+      ? 'bg-teal-50 text-teal-700 dark:bg-teal-950/40 dark:text-teal-200'
+      : 'bg-rose-100 text-rose-700 dark:bg-rose-950/50 dark:text-rose-200';
+
+    return `
+      <section class="rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] p-5 sm:p-6 shadow-sm shadow-rose-100/70 dark:shadow-none">
+        <div class="grid sm:grid-cols-[220px_minmax(0,1fr)] gap-5 items-start">
+          <figure class="max-w-[220px] mx-auto">
+            <img src="${match.image}" alt="${match.cn}" class="w-full aspect-[4/5] object-contain object-center rounded-lg bg-rose-50 dark:bg-[#181216] border border-rose-100 dark:border-rose-900/30" decoding="async">
+            <figcaption class="mt-2 text-xs leading-relaxed text-zinc-500 dark:text-rose-100/58">${match.achievement}</figcaption>
+          </figure>
+          <div>
+            <p class="text-xs font-medium uppercase tracking-wide ${tone === 'teal' ? 'text-teal-600 dark:text-teal-300' : 'text-rose-500 dark:text-rose-300'}">${label}</p>
+            <h2 class="mt-2 text-2xl sm:text-3xl font-bold">${match.cn}</h2>
+            <p class="mt-3 inline-flex px-3 py-1.5 rounded-lg ${badgeClass} text-sm font-medium">${badge}</p>
+            <p class="mt-4 text-base font-medium leading-relaxed">${match.intro}</p>
+            <p class="mt-3 text-sm sm:text-base text-zinc-600 dark:text-rose-100/74 leading-relaxed">${match.commentary}</p>
+            <div class="mt-4 flex flex-wrap gap-2">
+              ${(match.tags || []).map((tag) => `<span class="px-2.5 py-1 rounded-full bg-rose-50 dark:bg-rose-950/40 text-xs font-medium">${tag}</span>`).join('')}
+            </div>
+            <div class="mt-5 pt-4 border-t border-rose-100 dark:border-rose-900/30">
+              <h3 class="text-sm font-semibold">画像解读</h3>
+              <p class="mt-2 text-sm sm:text-base text-zinc-600 dark:text-rose-100/74 leading-relaxed">${match.desc}</p>
+            </div>
+            ${backgroundNote}
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+  sections.result.innerHTML = `
+    <div class="grid gap-6">
+      ${renderMatchCard(primaryMatch, '主维度 · 最pick的idol画像', result.badge, 'rose')}
+      ${secondaryMatch ? renderMatchCard(secondaryMatch, '副维度 · 隐藏的pick选项', secondaryBadge, 'teal') : ''}
+
+      <section class="flex flex-wrap gap-3">
+        <button id="restart-button" type="button" class="px-4 py-3 rounded-lg bg-rose-600 hover:bg-rose-700 text-white font-medium transition">再测一次</button>
+        <button id="edit-last-answer-button" type="button" class="px-4 py-3 rounded-lg bg-rose-100 hover:bg-rose-200 dark:bg-rose-950/50 dark:hover:bg-rose-900/70 font-medium transition">返回修改</button>
+        <a href="./index.html#${encodeURIComponent(primaryMatch.code)}" class="px-4 py-3 rounded-lg bg-rose-100 hover:bg-rose-200 dark:bg-rose-950/50 dark:hover:bg-rose-900/70 font-medium transition">看结果池</a>
+      </section>
+
+      <section class="grid sm:grid-cols-3 gap-3">
+        <div class="rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] p-4">
+          <p class="text-xs uppercase tracking-wide text-zinc-500 dark:text-rose-100/62">结果字符串</p>
+          <p class="mt-2 font-semibold">${result.resultPattern}</p>
+        </div>
+        <div class="rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] p-4">
+          <p class="text-xs uppercase tracking-wide text-zinc-500 dark:text-rose-100/62">主维度</p>
+          <p class="mt-2 font-semibold">${primaryMatch.cn}</p>
+        </div>
+        <div class="rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] p-4">
+          <p class="text-xs uppercase tracking-wide text-zinc-500 dark:text-rose-100/62">副维度</p>
+          <p class="mt-2 font-semibold">${secondaryMatch ? secondaryMatch.cn : '暂无'}</p>
+        </div>
+      </section>
+
+      <section class="rounded-lg border border-rose-100 dark:border-rose-900/30 bg-white dark:bg-[#211a1f] p-5 sm:p-6">
+        <h3 class="text-lg font-semibold">Top 5 相似画像</h3>
+        <ol class="mt-4">${topMatches}</ol>
+      </section>
+
+      <section>
+        <h3 class="text-lg font-semibold">十二维度画像</h3>
+        ${dimensionGroups}
+      </section>
+    </div>
+  `;
+
+  document.getElementById('restart-button').addEventListener('click', () => {
+    startQuiz();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  document.getElementById('edit-last-answer-button').addEventListener('click', () => {
+    state.session.previousQuestion();
+    renderQuiz();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+}
+
+function startQuiz() {
+  state.session = createQuizSession(quizData);
+  state.imageByQuestionId = new Map();
+  renderQuiz();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+startQuiz();
+</script>
+</body>
+</html>

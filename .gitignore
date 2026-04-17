@@ -3,3 +3,6 @@
 .gstack/
 .vercel/
 web/.vercel/
+web/.wrangler/
+
+.wrangler/
